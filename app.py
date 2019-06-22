@@ -17,7 +17,8 @@ def graph():
   
   quandl.ApiConfig.api_key = "kbhrM4FS1yrozTefNaky"
 
-  r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/{stock}.csv'.format(stock=request.args['ticker']), auth=('natasha.hagemeyer@mg.thedataincubator.com', 'ahsataN1!'))
+  #r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/{stock}.csv'.format(stock=request.args['ticker']), auth=('natasha.hagemeyer@mg.thedataincubator.com', 'ahsataN1!'))
+  r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/AAPL.csv', auth=('natasha.hagemeyer@mg.thedataincubator.com', 'ahsataN1!'))
 
   return """
   <h1>Let it Burn</h1>
