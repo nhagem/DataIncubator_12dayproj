@@ -13,10 +13,12 @@ def about():
 @app.route('/graph', methods=['GET', 'POST'])
 def graph():
 
+  r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/AAPL.csv', auth=('natasha.hagemeyer@mg.thedataincubator.com', 'ahsataN1!'))
+
   return """
   <h1>Let it Burn</h1>
-  <p>Requests are {args}</p>
-  """.format(args=request.args)
+  <p>Talking to Quandl is {args}</p>
+  """.format(args=r)
 
 if __name__ == '__main__':
   app.run(port=33507)
