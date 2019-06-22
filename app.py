@@ -27,13 +27,11 @@ def graph():
   df = pd.read_csv(StringIO(r.text),sep=',')
 
   p = figure(x_axis_label='Date',y_axis_label='Close')
-  p.line(df_sub['Date'],df_sub['Close'], line_width=2)
+  p.line(df['Date'],df['Close'], line_width=2)
 
   save(p)
 
   script, div = components(p)
-
-  #return '<h1>Yeah okay</h1>'
 
   return render_template('graph.html', script=script, div=div)
 
