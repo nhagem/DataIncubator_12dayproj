@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import requests
+import quandl
 
 app = Flask(__name__)
 
@@ -13,6 +14,8 @@ def about():
 
 @app.route('/graph', methods=['GET', 'POST'])
 def graph():
+  
+  quandl.ApiConfig.api_key = "kbhrM4FS1yrozTefNaky"
 
   r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/{stock}.csv'.format(stock=request.args['ticker']), auth=('natasha.hagemeyer@mg.thedataincubator.com', 'ahsataN1!'))
 
