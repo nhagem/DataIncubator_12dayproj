@@ -23,7 +23,7 @@ def graph():
   
   #Pull the requested data into a pandas dataframe
   df = pd.read_csv(StringIO(r.text),sep=',')
-
+  df_sub = df[['Date',request.args['features']]]
 
   return """
   <h1>Let it Burn</h1>
