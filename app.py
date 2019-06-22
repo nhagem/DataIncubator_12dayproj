@@ -14,8 +14,9 @@ def about():
 def graph():
 
   return """
-  <h1>Hello heroku I hate u</h1>
-  """
+  <h1>Let it Burn</h1>
+  <p>Requests are {args}</p>
+  """.format(args=request.args)
 
 if __name__ == '__main__':
   app.run(port=33507)
