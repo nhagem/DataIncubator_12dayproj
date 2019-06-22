@@ -12,6 +12,7 @@ def about():
 
 @app.route('/foo', methods=['GET', 'POST'])
 def foo():
+  return render_template('about.html')
   pass
 
 if __name__ == '__main__':
