@@ -12,8 +12,10 @@ def about():
 
 @app.route('/graph', methods=['GET', 'POST'])
 def graph():
-  print(request.args)
-  return render_template('about.html')
+
+  return """
+  <h1>Hello heroku I hate u</h1>
+  """
 
 if __name__ == '__main__':
   app.run(port=33507)
