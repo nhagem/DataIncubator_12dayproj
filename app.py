@@ -11,7 +11,7 @@ def about():
   return render_template('about.html')
 
 @app.route('/graph', methods=['GET', 'POST'])
-def about():
+def graph():
   return render_template('about.html')
   pass
 
