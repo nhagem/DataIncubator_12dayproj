@@ -3,7 +3,7 @@ import requests
 import quandl
 import pandas as pd
 from io import StringIO
-import bokeh
+from bokeh.plotting import figure, output_file
 
 app = Flask(__name__)
 
@@ -26,8 +26,8 @@ def graph():
   df = pd.read_csv(StringIO(r.text),sep=',')
   df_sub = df[['Date',request.args['features']]]
 
-  p = bokeh.charts.Line(df_sub, x='Date', y=request.args['features'])
-  #script, div = bokeh.embed.components(p)
+  p = figure(x_axis_label='Date',y_axis_label=request.args['features'])
+  p.line(df_sub['Date'],df_sub[request.args['features']], line_width=2)
 
   return '<h1>Yeah okay</h1>'
 
