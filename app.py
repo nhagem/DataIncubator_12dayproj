@@ -10,7 +10,7 @@ def index():
 def about():
   return render_template('about.html')
 
-@app.route('index', methods=['GET', 'POST'])
+@app.route('/foo', methods=['GET', 'POST'])
 def foo():
   pass
 
