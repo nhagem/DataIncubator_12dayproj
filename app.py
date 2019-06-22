@@ -5,6 +5,7 @@ import pandas as pd
 from io import StringIO
 from bokeh.embed import components 
 from bokeh.charts import Line
+from bokeh import *
 
 app = Flask(__name__)
 
