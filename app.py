@@ -4,6 +4,7 @@ import quandl
 import pandas as pd
 from io import StringIO
 from bokeh.plotting import figure, output_file
+from bokeh.embed import components
 
 app = Flask(__name__)
 
@@ -26,8 +27,11 @@ def graph():
   df = pd.read_csv(StringIO(r.text),sep=',')
   df_sub = df[['Date',request.args['features']]]
 
+
   p = figure(x_axis_label='Date',y_axis_label=request.args['features'])
   p.line(df_sub['Date'],df_sub[request.args['features']], line_width=2)
+
+  script, div = components(p)
 
   return '<h1>Yeah okay</h1>'
 
