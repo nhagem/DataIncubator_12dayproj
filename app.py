@@ -27,7 +27,7 @@ def graph():
   df = pd.read_csv(StringIO(r.text),sep=',')
 
   p = figure(x_axis_label='Date',y_axis_label='Close')
-  p.line(df['Date'],df['Close'], line_width=2)
+  p = p.line(df['Date'],df['Close'], line_width=2)
 
   save(p)
 
