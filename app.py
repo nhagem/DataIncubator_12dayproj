@@ -3,6 +3,8 @@ import requests
 import quandl
 import pandas as pd
 from io import StringIO
+from bokeh.embed import components 
+from bokeh.charts import Line
 
 app = Flask(__name__)
 
@@ -25,10 +27,10 @@ def graph():
   df = pd.read_csv(StringIO(r.text),sep=',')
   df_sub = df[['Date',request.args['features']]]
 
-  return """
-  <h1>Let it Burn</h1>
-  <p>Talking to Quandl is {args}</p>
-  """.format(args=df_sub.head())
+  p = Line(df_sub, x='Date', y=request.args['features'], xlabel='Date', ylabel=request.args['features'])
+  script, div = components(p)
+
+  return render_template('graph.html', script=script, div=div)
 
 if __name__ == '__main__':
   app.run(port=33507)
