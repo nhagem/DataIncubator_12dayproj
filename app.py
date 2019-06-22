@@ -30,7 +30,9 @@ def graph():
   p = Line(df_sub, x='Date', y=request.args['features'], xlabel='Date', ylabel=request.args['features'])
   script, div = components(p)
 
-  return render_template('graph.html', script=script, div=div)
+  return '<h1>Yeah okay</h1>'
+
+  #return render_template('graph.html', script=script, div=div)
 
 if __name__ == '__main__':
   app.run(port=33507)
