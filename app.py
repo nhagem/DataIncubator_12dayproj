@@ -12,8 +12,8 @@ def about():
 
 @app.route('/graph', methods=['GET', 'POST'])
 def graph():
+  print(request.args)
   return render_template('about.html')
-  pass
 
 if __name__ == '__main__':
   app.run(port=33507)
