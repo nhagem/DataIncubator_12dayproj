@@ -26,8 +26,10 @@ def graph():
   #Pull the requested data into a pandas dataframe
   df = pd.read_csv(StringIO(r.text),sep=',')
 
+  output_file("lines.html")
+
   p = figure(x_axis_label='Date',y_axis_label='Close')
-  p = p.line(df['Date'],df['Close'], line_width=2)
+  p.line(df['Date'],df['Close'], line_width=2)
 
   save(p)
 
