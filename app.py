@@ -3,7 +3,7 @@ import requests
 import quandl
 import pandas as pd
 from io import StringIO
-from bokeh.plotting import figure, output_file
+from bokeh.plotting import figure, output_file, save
 from bokeh.embed import components
 
 app = Flask(__name__)
@@ -27,7 +27,9 @@ def graph():
   df = pd.read_csv(StringIO(r.text),sep=',')
 
   p = figure(x_axis_label='Date',y_axis_label='Close')
-  p = p.line(df_sub['Date'],df_sub['Close'], line_width=2)
+  p.line(df_sub['Date'],df_sub['Close'], line_width=2)
+
+  save(p)
 
   script, div = components(p)
 
