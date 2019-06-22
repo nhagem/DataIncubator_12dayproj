@@ -19,7 +19,7 @@ def graph():
   return """
   <h1>Let it Burn</h1>
   <p>Talking to Quandl is {args}</p>
-  """.format(args=r)
+  """.format(args=r.text)
 
 if __name__ == '__main__':
   app.run(port=33507)
