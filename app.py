@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect
 import requests
 import quandl
+import pandas as pd
+from io import StringIO
 
 app = Flask(__name__)
 
@@ -18,12 +20,15 @@ def graph():
   quandl.ApiConfig.api_key = "kbhrM4FS1yrozTefNaky"
 
   r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/{stock}.csv'.format(stock=request.args['ticker']), auth=('natasha.hagemeyer@mg.thedataincubator.com', 'ahsataN1!'))
-  #r = requests.get('https://www.quandl.com/api/v3/datasets/WIKI/AAPL.csv', auth=('natasha.hagemeyer@mg.thedataincubator.com', 'ahsataN1!'))
+  
+  #Pull the requested data into a pandas dataframe
+  df = pd.read_csv(StringIO(r.text),sep=',')
+
 
   return """
   <h1>Let it Burn</h1>
   <p>Talking to Quandl is {args}</p>
-  """.format(args=r.text)
+  """.format(args=df.head())
 
 if __name__ == '__main__':
   app.run(port=33507)
