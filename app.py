@@ -25,11 +25,9 @@ def graph():
   
   #Pull the requested data into a pandas dataframe
   df = pd.read_csv(StringIO(r.text),sep=',')
-  df_sub = df[['Date',request.args['features']]]
-
 
   p = figure(x_axis_label='Date',y_axis_label=request.args['features'])
-  p.line(df_sub['Date'],df_sub[request.args['features']], line_width=2)
+  p = p.line(df_sub['Date'],df_sub['Close'], line_width=2)
 
   script, div = components(p)
 
