@@ -28,7 +28,7 @@ def graph():
   return """
   <h1>Let it Burn</h1>
   <p>Talking to Quandl is {args}</p>
-  """.format(args=df.head())
+  """.format(args=df_sub.head())
 
 if __name__ == '__main__':
   app.run(port=33507)
