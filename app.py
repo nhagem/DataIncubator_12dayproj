@@ -8,6 +8,16 @@ from bokeh.embed import components
 
 app = Flask(__name__)
 
+def get_plot(df):
+  output_file("lines.html")
+
+  p = figure(x_axis_label='Date',y_axis_label='Close')
+  p.line(df['Date'],df['Close'], line_width=2)
+
+  save(p)
+
+  return(p)
+
 @app.route('/')
 def index():
   return render_template('index.html')
@@ -25,13 +35,11 @@ def graph():
   
   #Pull the requested data into a pandas dataframe
   df = pd.read_csv(StringIO(r.text),sep=',')
+  pd.to_datetime(df['Date']
 
-  output_file("lines.html")
+  df_sub = df[(df['Date'].dt.year==2017) & (df['Date'].dt.month==10)]
 
-  p = figure(x_axis_label='Date',y_axis_label='Close')
-  p.line(df['Date'],df['Close'], line_width=2)
-
-  save(p)
+  get_plot(df_sub)
 
   script, div = components(p)
 
