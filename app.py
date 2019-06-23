@@ -5,12 +5,13 @@ import pandas as pd
 from io import StringIO
 from bokeh.plotting import figure, output_file, save
 from bokeh.embed import components
+from datetime import datetime
 
 app = Flask(__name__)
 
 def get_plot(df):
   output_file('plot.html')
-  p = figure(x_axis_label='Date',y_axis_label='Close')
+  p = figure(x_axis_label='Date',y_axis_label='Close',x_axis_type="datetime")
   p.line(df['Date'],df['Close'], line_width=2)
   return(p)
 
@@ -31,7 +32,7 @@ def graph():
   
   #Pull the requested data into a pandas dataframe
   df = pd.read_csv(StringIO(r.text),sep=',')
-  #pd.to_datetime(df['Date'])
+  df['Dates] = pd.to_datetime(df['Date'])
 
   #df_sub = df[(df['Date'].dt.year==2017) & (df['Date'].dt.month==10)]
 
