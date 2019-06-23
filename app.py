@@ -11,7 +11,7 @@ app = Flask(__name__)
 def get_plot(df):
   output_file('plot.html')
   p = figure(x_axis_label='Date',y_axis_label='Close')
-  p = line(df['Date'],df['Close'], line_width=2)
+  p.line(df['Date'],df['Close'], line_width=2)
   return(p)
 
 @app.route('/')
