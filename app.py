@@ -9,13 +9,8 @@ from bokeh.embed import components
 app = Flask(__name__)
 
 def get_plot(df):
-  output_file("lines.html")
-
   p = figure(x_axis_label='Date',y_axis_label='Close')
   p.line(df['Date'],df['Close'], line_width=2)
-
-  save(p)
-
   return(p)
 
 @app.route('/')
@@ -37,9 +32,9 @@ def graph():
   df = pd.read_csv(StringIO(r.text),sep=',')
   pd.to_datetime(df['Date']
 
-  df_sub = df[(df['Date'].dt.year==2017) & (df['Date'].dt.month==10)]
+  #df_sub = df[(df['Date'].dt.year==2017) & (df['Date'].dt.month==10)]
 
-  get_plot(df_sub)
+  get_plot(df)
 
   script, div = components(p)
 
