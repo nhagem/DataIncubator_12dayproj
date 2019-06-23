@@ -34,8 +34,7 @@ def graph():
 
   #df_sub = df[(df['Date'].dt.year==2017) & (df['Date'].dt.month==10)]
 
-  p = figure(x_axis_label='Date',y_axis_label='Close')
-  p.line(df['Date'],df['Close'], line_width=2)
+  p = get_plot(df)
 
   script, div = components(p)
 
