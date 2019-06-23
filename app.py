@@ -32,7 +32,7 @@ def graph():
   
   #Pull the requested data into a pandas dataframe
   df = pd.read_csv(StringIO(r.text),sep=',')
-  df['Dates] = pd.to_datetime(df['Date'])
+  df['Date'] = pd.to_datetime(df['Date'])
 
   #df_sub = df[(df['Date'].dt.year==2017) & (df['Date'].dt.month==10)]
 
