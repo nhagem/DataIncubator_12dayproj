@@ -34,9 +34,9 @@ def graph():
   df = pd.read_csv(StringIO(r.text),sep=',')
   df['Date'] = pd.to_datetime(df['Date'])
 
-  #df_sub = df[(df['Date'].dt.year==2017) & (df['Date'].dt.month==10)]
+  df_sub = df[(df['Date'].dt.year==2017) & (df['Date'].dt.month==10)]
 
-  p = get_plot(df)
+  p = get_plot(df_sub)
 
   script, div = components(p)
 
